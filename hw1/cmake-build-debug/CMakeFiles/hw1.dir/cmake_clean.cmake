@@ -1,8 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/hw1.dir/graph_operations.cpp.obj"
   "CMakeFiles/hw1.dir/graph_operations.cpp.obj.d"
-  "CMakeFiles/hw1.dir/main.cpp.obj"
-  "CMakeFiles/hw1.dir/main.cpp.obj.d"
+  "CMakeFiles/hw1.dir/graph_simulator.cpp.obj"
+  "CMakeFiles/hw1.dir/graph_simulator.cpp.obj.d"
+  "CMakeFiles/hw1.dir/simulated_test.cpp.obj"
+  "CMakeFiles/hw1.dir/simulated_test.cpp.obj.d"
   "hw1.exe"
   "hw1.exe.manifest"
   "hw1.pdb"

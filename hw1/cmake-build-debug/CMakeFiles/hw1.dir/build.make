@@ -68,19 +68,19 @@ include CMakeFiles/hw1.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/hw1.dir/flags.make
 
-CMakeFiles/hw1.dir/main.cpp.obj: CMakeFiles/hw1.dir/flags.make
-CMakeFiles/hw1.dir/main.cpp.obj: I:/Code/COT5405/hw1/main.cpp
-CMakeFiles/hw1.dir/main.cpp.obj: CMakeFiles/hw1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=I:\Code\COT5405\hw1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hw1.dir/main.cpp.obj"
-	C:\Users\lennard\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hw1.dir/main.cpp.obj -MF CMakeFiles\hw1.dir\main.cpp.obj.d -o CMakeFiles\hw1.dir\main.cpp.obj -c I:\Code\COT5405\hw1\main.cpp
+CMakeFiles/hw1.dir/simulated_test.cpp.obj: CMakeFiles/hw1.dir/flags.make
+CMakeFiles/hw1.dir/simulated_test.cpp.obj: I:/Code/COT5405/hw1/simulated_test.cpp
+CMakeFiles/hw1.dir/simulated_test.cpp.obj: CMakeFiles/hw1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=I:\Code\COT5405\hw1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hw1.dir/simulated_test.cpp.obj"
+	C:\Users\lennard\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hw1.dir/simulated_test.cpp.obj -MF CMakeFiles\hw1.dir\simulated_test.cpp.obj.d -o CMakeFiles\hw1.dir\simulated_test.cpp.obj -c I:\Code\COT5405\hw1\simulated_test.cpp
 
-CMakeFiles/hw1.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/hw1.dir/main.cpp.i"
-	C:\Users\lennard\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E I:\Code\COT5405\hw1\main.cpp > CMakeFiles\hw1.dir\main.cpp.i
+CMakeFiles/hw1.dir/simulated_test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/hw1.dir/simulated_test.cpp.i"
+	C:\Users\lennard\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E I:\Code\COT5405\hw1\simulated_test.cpp > CMakeFiles\hw1.dir\simulated_test.cpp.i
 
-CMakeFiles/hw1.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/hw1.dir/main.cpp.s"
-	C:\Users\lennard\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S I:\Code\COT5405\hw1\main.cpp -o CMakeFiles\hw1.dir\main.cpp.s
+CMakeFiles/hw1.dir/simulated_test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/hw1.dir/simulated_test.cpp.s"
+	C:\Users\lennard\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S I:\Code\COT5405\hw1\simulated_test.cpp -o CMakeFiles\hw1.dir\simulated_test.cpp.s
 
 CMakeFiles/hw1.dir/graph_operations.cpp.obj: CMakeFiles/hw1.dir/flags.make
 CMakeFiles/hw1.dir/graph_operations.cpp.obj: I:/Code/COT5405/hw1/graph_operations.cpp
@@ -96,21 +96,37 @@ CMakeFiles/hw1.dir/graph_operations.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/hw1.dir/graph_operations.cpp.s"
 	C:\Users\lennard\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S I:\Code\COT5405\hw1\graph_operations.cpp -o CMakeFiles\hw1.dir\graph_operations.cpp.s
 
+CMakeFiles/hw1.dir/graph_simulator.cpp.obj: CMakeFiles/hw1.dir/flags.make
+CMakeFiles/hw1.dir/graph_simulator.cpp.obj: I:/Code/COT5405/hw1/graph_simulator.cpp
+CMakeFiles/hw1.dir/graph_simulator.cpp.obj: CMakeFiles/hw1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=I:\Code\COT5405\hw1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/hw1.dir/graph_simulator.cpp.obj"
+	C:\Users\lennard\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hw1.dir/graph_simulator.cpp.obj -MF CMakeFiles\hw1.dir\graph_simulator.cpp.obj.d -o CMakeFiles\hw1.dir\graph_simulator.cpp.obj -c I:\Code\COT5405\hw1\graph_simulator.cpp
+
+CMakeFiles/hw1.dir/graph_simulator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/hw1.dir/graph_simulator.cpp.i"
+	C:\Users\lennard\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E I:\Code\COT5405\hw1\graph_simulator.cpp > CMakeFiles\hw1.dir\graph_simulator.cpp.i
+
+CMakeFiles/hw1.dir/graph_simulator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/hw1.dir/graph_simulator.cpp.s"
+	C:\Users\lennard\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S I:\Code\COT5405\hw1\graph_simulator.cpp -o CMakeFiles\hw1.dir\graph_simulator.cpp.s
+
 # Object files for target hw1
 hw1_OBJECTS = \
-"CMakeFiles/hw1.dir/main.cpp.obj" \
-"CMakeFiles/hw1.dir/graph_operations.cpp.obj"
+"CMakeFiles/hw1.dir/simulated_test.cpp.obj" \
+"CMakeFiles/hw1.dir/graph_operations.cpp.obj" \
+"CMakeFiles/hw1.dir/graph_simulator.cpp.obj"
 
 # External object files for target hw1
 hw1_EXTERNAL_OBJECTS =
 
-hw1.exe: CMakeFiles/hw1.dir/main.cpp.obj
+hw1.exe: CMakeFiles/hw1.dir/simulated_test.cpp.obj
 hw1.exe: CMakeFiles/hw1.dir/graph_operations.cpp.obj
+hw1.exe: CMakeFiles/hw1.dir/graph_simulator.cpp.obj
 hw1.exe: CMakeFiles/hw1.dir/build.make
 hw1.exe: CMakeFiles/hw1.dir/linkLibs.rsp
 hw1.exe: CMakeFiles/hw1.dir/objects1.rsp
 hw1.exe: CMakeFiles/hw1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=I:\Code\COT5405\hw1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable hw1.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=I:\Code\COT5405\hw1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable hw1.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\hw1.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

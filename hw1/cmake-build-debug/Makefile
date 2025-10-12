@@ -152,29 +152,53 @@ graph_operations.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/graph_operations.cpp.s
 .PHONY : graph_operations.cpp.s
 
-main.obj: main.cpp.obj
-.PHONY : main.obj
+graph_simulator.obj: graph_simulator.cpp.obj
+.PHONY : graph_simulator.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/main.cpp.obj
-.PHONY : main.cpp.obj
+graph_simulator.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/graph_simulator.cpp.obj
+.PHONY : graph_simulator.cpp.obj
 
-main.i: main.cpp.i
-.PHONY : main.i
+graph_simulator.i: graph_simulator.cpp.i
+.PHONY : graph_simulator.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/main.cpp.i
-.PHONY : main.cpp.i
+graph_simulator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/graph_simulator.cpp.i
+.PHONY : graph_simulator.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+graph_simulator.s: graph_simulator.cpp.s
+.PHONY : graph_simulator.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/main.cpp.s
-.PHONY : main.cpp.s
+graph_simulator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/graph_simulator.cpp.s
+.PHONY : graph_simulator.cpp.s
+
+simulated_test.obj: simulated_test.cpp.obj
+.PHONY : simulated_test.obj
+
+# target to build an object file
+simulated_test.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/simulated_test.cpp.obj
+.PHONY : simulated_test.cpp.obj
+
+simulated_test.i: simulated_test.cpp.i
+.PHONY : simulated_test.i
+
+# target to preprocess a source file
+simulated_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/simulated_test.cpp.i
+.PHONY : simulated_test.cpp.i
+
+simulated_test.s: simulated_test.cpp.s
+.PHONY : simulated_test.s
+
+# target to generate assembly for a file
+simulated_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hw1.dir\build.make CMakeFiles/hw1.dir/simulated_test.cpp.s
+.PHONY : simulated_test.cpp.s
 
 # Help Target
 help:
@@ -188,9 +212,12 @@ help:
 	@echo ... graph_operations.obj
 	@echo ... graph_operations.i
 	@echo ... graph_operations.s
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... graph_simulator.obj
+	@echo ... graph_simulator.i
+	@echo ... graph_simulator.s
+	@echo ... simulated_test.obj
+	@echo ... simulated_test.i
+	@echo ... simulated_test.s
 .PHONY : help
 
 

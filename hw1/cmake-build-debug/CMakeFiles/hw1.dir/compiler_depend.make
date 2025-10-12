@@ -173,7 +173,7 @@ CMakeFiles/hw1.dir/graph_operations.cpp.obj: I:/Code/COT5405/hw1/graph_operation
   C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/wctype.h \
   I:/Code/COT5405/hw1/graph_operations.h
 
-CMakeFiles/hw1.dir/main.cpp.obj: I:/Code/COT5405/hw1/main.cpp \
+CMakeFiles/hw1.dir/simulated_test.cpp.obj: I:/Code/COT5405/hw1/simulated_test.cpp \
   C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward/binders.h \
   C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bit \
   C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/alloc_traits.h \
@@ -337,7 +337,8 @@ CMakeFiles/hw1.dir/main.cpp.obj: I:/Code/COT5405/hw1/main.cpp \
   C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/vadefs.h \
   C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/wchar.h \
   C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/wctype.h \
-  I:/Code/COT5405/hw1/graph_operations.h
+  I:/Code/COT5405/hw1/graph_operations.h \
+  I:/Code/COT5405/hw1/graph_simulator.h
 
 
 C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/nested_exception.h:
@@ -562,6 +563,8 @@ C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/inclu
 
 C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/type_traits.h:
 
+I:/Code/COT5405/hw1/graph_simulator.h:
+
 C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/initializer_list:
 
 C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ios:
@@ -646,8 +649,6 @@ C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/inclu
 
 C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/ctype.h:
 
-I:/Code/COT5405/hw1/main.cpp:
-
 C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/limits.h:
 
 C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/locale.h:
@@ -683,3 +684,5 @@ C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/inclu
 C:/Users/lennard/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/wctype.h:
 
 I:/Code/COT5405/hw1/graph_operations.h:
+
+I:/Code/COT5405/hw1/simulated_test.cpp:
