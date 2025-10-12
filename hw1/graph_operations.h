@@ -6,15 +6,25 @@
 #define HW1__GRAPH_OPERATIONS_H_
 #include <vector>
 #include "map"
+#include "list"
+#include "unordered_set"
+
 using  namespace  std;
 class Graph {
  public:
   Graph();
+
   void add_edge(int u, int v);
   void delete_edge(int u, int v);
+  void print_graph() const;
+  vector<int> graph_BFS(int start_vertex);
+  vector<list<int>>  connected_components();
+
+
 
  private:
   map<int, vector<int>> adj_list;
+  void dfs_helper_cc(int u, unordered_set<int>& visted, list<int>& current_component);
 };
 
 #endif //HW1__GRAPH_OPERATIONS_H_

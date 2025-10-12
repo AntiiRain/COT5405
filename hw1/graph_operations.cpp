@@ -2,7 +2,10 @@
 // Created by lennard on 25-10-11.
 //
 
+#include <iostream>
 #include "graph_operations.h"
+#include "queue"
+#include "unordered_set"
 Graph::Graph() {
 
 }
@@ -17,8 +20,78 @@ void Graph::delete_edge(int u, int v) {
       break;
     }
   }
-
 }
+
+void Graph::print_graph() const {
+  if (adj_list.empty()) {
+    std::cout << "Graph is empty." << std::endl;
+    return;
+  }
+  // The 'const' here means this function promises not to change the object
+  for (auto const& [vertex, neighbors] : adj_list) {
+    std::cout << "Vertex " << vertex << " -> [ ";
+    for (int neighbor : neighbors) {
+      std::cout << neighbor << " ";
+    }
+    std::cout << "]" << std::endl;
+  }
+}
+
+vector<list<int>> Graph::connected_components(){
+  vector<list<int>> all_components;
+  unordered_set<int> visited;
+  //Iteration this adj vertex
+  for(auto &pair: adj_list){
+    if(visited.count(pair.first)) continue;
+    list<int> current_component{pair.first};
+    visited.insert(pair.first);
+    //go to recursion of this vertex
+    dfs_helper_cc(pair.first, visited, current_component);
+
+    all_components.push_back(current_component);
+  }
+
+  return all_components;
+}
+
+
+void Graph::dfs_helper_cc(int u, unordered_set<int>& visited, list<int>& current_component){
+  for(auto vertex:adj_list[u]){
+    //skip if visited
+    if(visited.count(vertex)) continue;
+    current_component.push_back((vertex));
+    visited.insert((vertex));
+    dfs_helper_cc(vertex,visited,current_component);
+//    cout<< "this connected components end";
+  }
+}
+
+vector<int> Graph::graph_BFS(int start_vertex){
+  std::vector<int> res;
+  std::map<int,bool> visited;
+  //visit que
+  std::queue<int> que;
+  que.push(start_vertex);
+  while(!que.empty()){
+    //get first vertx form visit que
+    int current = que.front();
+    que.pop();
+    //make it visted
+    visited[current] = true;
+
+    res.push_back(current);
+    //put his neighbor to visit que
+    for(int neighbor :adj_list[current]){
+      //push vertx if it haven't been visit
+      if(visited.find(neighbor) == visited.end()){
+        que.push(neighbor);
+      }
+    }
+  }
+  return res;
+}
+
+
 
 //  auto it = adj_list.find(u);
 //

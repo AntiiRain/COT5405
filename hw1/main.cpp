@@ -34,6 +34,14 @@ int main() {
   std::cout << "\nGraph structure (should be unchanged):" << std::endl;
   my_graph.print_graph();
 
-
+  std::vector<int> visitlist;
+  vector<list<int>> res;
+  res=my_graph.connected_components();
+  for(auto i :res){
+    for(auto j :i){
+      cout<<j;
+    }
+  }
   return 0;
+
 }
