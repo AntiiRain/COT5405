@@ -4,9 +4,17 @@
 
 #ifndef HW1__GRAPH_OPERATIONS_H_
 #define HW1__GRAPH_OPERATIONS_H_
+#include <vector>
+#include "map"
+using  namespace  std;
+class Graph {
+ public:
+  Graph();
+  void add_edge(int u, int v);
+  void delete_edge(int u, int v);
 
-class graph_operations {
-
+ private:
+  map<int, vector<int>> adj_list;
 };
 
 #endif //HW1__GRAPH_OPERATIONS_H_
