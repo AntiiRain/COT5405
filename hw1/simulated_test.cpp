@@ -1,12 +1,10 @@
-
-
-#include <iostream>
-#include "graph_operations.h" // Include your Graph class definition
-
 #include <iostream>
 #include "graph_operations.h"
 #include "graph_simulator.h"
-// 打印结果的辅助函数
+
+// ----------------- HELPER FUNCTIONS -----------------
+
+// Helper function to print connected components
 void print_all_components(const string& title, const vector<list<int>>& components) {
   cout << "## " << title << " ##" << endl;
   cout << "Found " << components.size() << " connected components:" << endl;
@@ -21,78 +19,85 @@ void print_all_components(const string& title, const vector<list<int>>& componen
   cout << "------------------------------------" << endl;
 }
 
-int main() {
-  cout << "--- Running Graph Algorithm Simulations ---" << endl;
+// ✅ NEW: Helper function to print the result of one_cycle()
+void print_cycle(const string& title, const list<int>& cycle) {
+  cout << "## " << title << " ##" << endl;
+  if (cycle.empty()) {
+    cout << "✅ Result: No cycle found." << endl;
+  } else {
+    cout << "✅ Result: Cycle found: [ ";
+    for (int node : cycle) {
+      cout << node << " ";
+    }
+    cout << "]" << endl;
+  }
+  cout << "------------------------------------" << endl;
+}
 
-  // 1. 测试 n-cycle 图 (一个连通分量)
+
+// ----------------- MAIN FUNCTION -----------------
+
+int main() {
+  cout << "--- Running connected_components() Simulations ---" << endl;
+
+  // 1. Create a graph with a simple cycle
   Graph g_cycle = create_n_cycle(5);
   cout << "\nTesting a 5-node cycle graph:" << endl;
   g_cycle.print_graph();
   vector<list<int>> components1 = g_cycle.connected_components();
   print_all_components("5-Node Cycle Test", components1);
 
-  // 2. 测试一个包含多个连通分量的自定义图
-  Graph g_multi;
-  g_multi.add_edge(0, 1); g_multi.add_edge(1, 0);
-  g_multi.add_edge(1, 2); g_multi.add_edge(2, 1);
-  g_multi.add_edge(3, 4); g_multi.add_edge(4, 3);
-  g_multi.add_edge(5, 5); // 孤立点
-  cout << "\nTesting a multi-component graph:" << endl;
-  g_multi.print_graph();
-  vector<list<int>> components2 = g_multi.connected_components();
-  print_all_components("Multi-Component Test", components2);
+  // 2. Create an acyclic graph (a forest) with multiple components
+  Graph g_multi_acyclic;
+  g_multi_acyclic.add_edge(0, 1); g_multi_acyclic.add_edge(1, 0);
+  g_multi_acyclic.add_edge(1, 2); g_multi_acyclic.add_edge(2, 1);
+  g_multi_acyclic.add_edge(3, 4); g_multi_acyclic.add_edge(4, 3);
+  g_multi_acyclic.add_edge(5, 5); // Isolated node
+  cout << "\nTesting a multi-component acyclic graph:" << endl;
+  g_multi_acyclic.print_graph();
+  vector<list<int>> components2 = g_multi_acyclic.connected_components();
+  print_all_components("Multi-Component Acyclic Test", components2);
 
-  // 3. 测试空图 (多个连通分量, 每个大小为1)
+  // 3. Create an empty graph (acyclic)
   Graph g_empty = create_empty_graph(4);
   cout << "\nTesting a 4-node empty graph:" << endl;
   g_empty.print_graph();
   vector<list<int>> components3 = g_empty.connected_components();
   print_all_components("Empty Graph Test", components3);
 
+
+  // =======================================================
+  //             ✅ NEW: one_cycle() Test Cases
+  // =======================================================
+  cout << "\n\n--- Running one_cycle() Simulations ---" << endl;
+
+  // Test A: Using the 5-node cycle graph (SHOULD find a cycle)
+  cout << "\n[Test A] Testing on the 5-node cycle graph..." << endl;
+  list<int> cycle_result1 = g_cycle.one_cycle();
+  print_cycle("5-Node Cycle Test", cycle_result1);
+
+  // Test B: Using the multi-component acyclic graph (should NOT find a cycle)
+  cout << "\n[Test B] Testing on the acyclic multi-component graph..." << endl;
+  list<int> cycle_result2 = g_multi_acyclic.one_cycle();
+  print_cycle("Acyclic Multi-Component Test", cycle_result2);
+
+  // Test C: A more complex graph with branches and a cycle (SHOULD find a cycle)
+  Graph g_complex_cycle;
+  g_complex_cycle.add_edge(0, 1); g_complex_cycle.add_edge(1, 0);
+  g_complex_cycle.add_edge(1, 2); g_complex_cycle.add_edge(2, 1);
+  g_complex_cycle.add_edge(2, 3); g_complex_cycle.add_edge(3, 2); // Dead-end branch
+  g_complex_cycle.add_edge(1, 4); g_complex_cycle.add_edge(4, 1);
+  g_complex_cycle.add_edge(4, 5); g_complex_cycle.add_edge(5, 4);
+  g_complex_cycle.add_edge(5, 0); g_complex_cycle.add_edge(0, 5); // This edge creates the cycle 0-1-4-5-0
+  cout << "\n[Test C] Testing on a complex graph with a cycle:" << endl;
+  g_complex_cycle.print_graph();
+  list<int> cycle_result3 = g_complex_cycle.one_cycle();
+  print_cycle("Complex Cycle Test", cycle_result3);
+
+  // Test D: Using the empty graph (should NOT find a cycle)
+  cout << "\n[Test D] Testing on the 4-node empty graph..." << endl;
+  list<int> cycle_result4 = g_empty.one_cycle();
+  print_cycle("Empty Graph Test", cycle_result4);
+
   return 0;
 }
-
-
-
-//int main() {
-//  // 1. Create a Graph object
-//  Graph my_graph;
-//  std::cout << "Graph created." << std::endl;
-//
-//  // 2. Add some edges to form a simple graph
-//  // Let's make a graph like: 1 -> 2, 1 -> 3, 2 -> 3, 3 -> 4
-//  std::cout << "\nAdding edges: 1->2, 1->3, 2->3, 3->4" << std::endl;
-//  my_graph.add_edge(1, 2);
-//  my_graph.add_edge(1, 3);
-//  my_graph.add_edge(2, 3);
-//  my_graph.add_edge(3, 4);
-//
-//  // 3. Print the graph to see its current state
-//  std::cout << "\nCurrent graph structure:" << std::endl;
-//  my_graph.print_graph();
-//
-//  // 4. Test the delete_edge function
-//  std::cout << "\nDeleting edge 1 -> 3..." << std::endl;
-//  my_graph.delete_edge(1, 3);
-//
-//  // 5. Print the graph again to verify the edge was removed
-//  std::cout << "\nGraph structure after deleting edge:" << std::endl;
-//  my_graph.print_graph();
-//
-//  // 6. Test deleting a non-existent edge
-//  std::cout << "\nAttempting to delete non-existent edge 1 -> 4..." << std::endl;
-//  my_graph.delete_edge(1, 4);
-//  std::cout << "\nGraph structure (should be unchanged):" << std::endl;
-//  my_graph.print_graph();
-//
-//  std::vector<int> visitlist;
-//  vector<list<int>> res;
-//  res=my_graph.connected_components();
-//  for(auto i :res){
-//    for(auto j :i){
-//      cout<<j;
-//    }
-//  }
-//  return 0;
-//
-//}

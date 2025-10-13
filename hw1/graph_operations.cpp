@@ -6,6 +6,8 @@
 #include "graph_operations.h"
 #include "queue"
 #include "unordered_set"
+#include "list"
+#include <algorithm>
 Graph::Graph() {
 
 }
@@ -66,6 +68,56 @@ void Graph::dfs_helper_cc(int u, unordered_set<int>& visited, list<int>& current
   }
 }
 
+
+list<int> Graph::one_cycle() {
+  unordered_set<int> visited;
+  list<int> result_cycle;
+  //Iteration this adj vertex
+  for(auto &pair: adj_list){
+    int u = pair.first;
+    //if vertex connect it self
+    if(visited.count(pair.first)) continue;
+    vector<int> current_path;
+
+    if (dfs_helper_cycle(u, -1, visited, current_path, result_cycle)) {
+      return result_cycle; // 找到环，立刻返回
+    }
+  }
+  return {};
+}
+
+
+bool Graph::dfs_helper_cycle(int u, int p, unordered_set<int>& visited,
+                             vector<int>& path, list<int>& result_cycle){
+  visited.insert(u);
+  path.push_back(u);
+  for(int vertex:adj_list[u]){
+    if (vertex == p) {
+      continue;
+    }
+
+    auto it = find(path.begin(), path.end(), vertex);
+    if (it != path.end()) {
+      result_cycle.assign(it, path.end());
+      result_cycle.push_back(vertex); // 闭合环
+      if (result_cycle.size() >= 3) {
+        result_cycle = result_cycle; // It's a valid cycle!
+        return true;
+      }
+    }
+    if (visited.find(vertex) == visited.end()) {
+      if (dfs_helper_cycle(vertex, u, visited, path, result_cycle)) {
+        return true; // 如果下层调用找到了环, 立刻向上传递 true
+      }
+    }
+  }
+  path.pop_back();
+  return false;
+}
+
+
+
+
 vector<int> Graph::graph_BFS(int start_vertex){
   std::vector<int> res;
   std::map<int,bool> visited;
@@ -90,8 +142,6 @@ vector<int> Graph::graph_BFS(int start_vertex){
   }
   return res;
 }
-
-
 
 //  auto it = adj_list.find(u);
 //

@@ -19,12 +19,15 @@ class Graph {
   void print_graph() const;
   vector<int> graph_BFS(int start_vertex);
   vector<list<int>>  connected_components();
-
+  list<int> one_cycle();
 
 
  private:
   map<int, vector<int>> adj_list;
   void dfs_helper_cc(int u, unordered_set<int>& visted, list<int>& current_component);
+  bool dfs_helper_cycle(int u, int p, unordered_set<int>& visited,
+                        vector<int>& path, list<int>& result_cycle);
+
 };
 
 #endif //HW1__GRAPH_OPERATIONS_H_
