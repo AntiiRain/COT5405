@@ -160,13 +160,13 @@ int main() {
   vector<int> complete_graph_sizes = {10, 50, 100, 500, 1000};
 
   cout << "========================================================" << endl;
-  cout << "       开始进行图算法系统性性能测试" << endl;
+  cout << "       Start systematic performance testing of graph algorithms" << endl;
   cout << "========================================================" << endl;
 
   // -----------------------------------------------------------------
   // 实验一：n-cycle (n元环图)
   // -----------------------------------------------------------------
-  cout << "\n\n******************** 实验一: N-Cycle Graph ********************" << endl;
+  cout << "\n\n******************** experiment 1: N-Cycle Graph ********************" << endl;
   for (int n : sizes) {
     print_test_header("N-Cycle Graph", n);
     Graph g = create_n_cycle(n);
@@ -196,7 +196,7 @@ int main() {
   // -----------------------------------------------------------------
   // 实验二：Complete Graph (完全图)
   // -----------------------------------------------------------------
-  cout << "\n\n******************** 实验二: Complete Graph ********************" << endl;
+  cout << "\n\n******************** experiment 2: Complete Graph ********************" << endl;
   for (int n : complete_graph_sizes) {
     print_test_header("Complete Graph", n);
     Graph g = create_complete_graph(n);
@@ -226,7 +226,7 @@ int main() {
   // -----------------------------------------------------------------
   // 实验三：Empty Graph (空图)
   // -----------------------------------------------------------------
-  cout << "\n\n******************** 实验三: Empty Graph ********************" << endl;
+  cout << "\n\n******************** experiment 3: Empty Graph ********************" << endl;
   for (int n : sizes) {
     print_test_header("Empty Graph", n);
     Graph g = create_empty_graph(n);
@@ -254,11 +254,24 @@ int main() {
   }
 
   cout << "\n\n========================================================" << endl;
-  cout << "             所有性能测试已完成" << endl;
+  cout << "             performance testing end" << endl;
   cout << "========================================================" << endl;
 
 
+  cout << "\n--- 准备进行峰值内存测量 ---" << endl;
+  cout << "正在创建用于内存测试的最大图 (n=1000 的完全图)..." << endl;
 
+  // 重新创建你的程序将处理的最大的图。
+  // 对于大多数情况, 完全图会比稀疏图占用更多内存。
+  Graph g_for_memory_test = create_complete_graph(1000);
+
+  cout << "\n>>> 最大图已创建，程序现在暂停。" << endl;
+  cout << ">>> 请打开任务管理器, 找到本程序 (例如 hw1.exe) 并记录其内存占用。" << endl;
+  cout << ">>> 记录数值后, 在此窗口按 Enter 键即可退出程序。" << endl;
+
+  // 这行代码会等待用户按 Enter 键
+  cin.get();
+  // 在 CLion 的运行窗口中，你可能需要按两次 Enter
 
 
   return 0;

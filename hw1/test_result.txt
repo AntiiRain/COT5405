@@ -1,0 +1,73 @@
+******************** experiment 1: N-Cycle Graph ********************
+
+--- N-Cycle Graph (n = 10) ---
+  - connected_components() took: 0.012 ms
+  - one_cycle() took: 0.0129 ms
+  - shortest_paths(0) took: 0.0394 ms
+
+--- N-Cycle Graph (n = 100) ---
+  - connected_components() took: 0.0568 ms
+  - one_cycle() took: 0.0806 ms
+  - shortest_paths(0) took: 1.3142 ms
+
+--- N-Cycle Graph (n = 1000) ---
+  - connected_components() took: 0.5064 ms
+  - one_cycle() took: 1.6961 ms
+  - shortest_paths(0) took: 139.398 ms
+
+--- N-Cycle Graph (n = 5000) ---
+  - connected_components() took: 2.3538 ms
+  - one_cycle() took: 30.6837 ms
+  - shortest_paths(0) took: 3784.61 ms
+
+
+******************** experiment 2: Complete Graph ********************
+
+--- Complete Graph (n = 10) ---
+  - connected_components() took: 0.0153 ms
+  - one_cycle() took: 0.0149 ms
+  - shortest_paths(0) took: 0.0405 ms
+
+--- Complete Graph (n = 50) ---
+  - connected_components() took: 0.0925 ms
+  - one_cycle() took: 0.0136 ms
+  - shortest_paths(0) took: 0.4504 ms
+
+--- Complete Graph (n = 100) ---
+  - connected_components() took: 0.3215 ms
+  - one_cycle() took: 0.0122 ms
+  - shortest_paths(0) took: 1.554 ms
+
+--- Complete Graph (n = 500) ---
+  - connected_components() took: 6.842 ms
+  - one_cycle() took: 0.0108 ms
+  - shortest_paths(0) took: 40.2246 ms
+
+--- Complete Graph (n = 1000) ---
+  - connected_components() took: 26.9384 ms
+  - one_cycle() took: 0.0115 ms
+  - shortest_paths(0) took: 166.541 ms
+
+
+******************** experiment 3: Empty Graph ********************
+
+--- Empty Graph (n = 10) ---
+  - connected_components() took: 0.0161 ms
+  - one_cycle() took: 0.0156 ms
+  - shortest_paths(0) took: 0.0116 ms
+
+--- Empty Graph (n = 100) ---
+  - connected_components() took: 0.0582 ms
+  - one_cycle() took: 0.0848 ms
+  - shortest_paths(0) took: 0.0447 ms
+
+--- Empty Graph (n = 1000) ---
+  - connected_components() took: 0.5185 ms
+  - one_cycle() took: 0.8 ms
+  - shortest_paths(0) took: 0.2665 ms
+
+--- Empty Graph (n = 5000) ---
+  - connected_components() took: 2.5333 ms
+  - one_cycle() took: 4.0992 ms
+  - shortest_paths(0) took: 1.3294 ms
+
