@@ -19,6 +19,20 @@ void print_all_components(const string& title, const vector<list<int>>& componen
   cout << "------------------------------------" << endl;
 }
 
+void print_paths(const string& title, const map<int, list<int>>& paths) {
+  cout << "## " << title << " ##" << endl;
+  for (const auto& pair : paths) {
+    cout << "  Path to " << pair.first << ": [ ";
+    for (int node : pair.second) {
+      cout << node << " ";
+    }
+    cout << "]" << endl;
+  }
+  cout << "------------------------------------" << endl;
+}
+
+
+
 // NEW: Helper function to print the result of one_cycle()
 void print_cycle(const string& title, const list<int>& cycle) {
   cout << "## " << title << " ##" << endl;
@@ -98,6 +112,33 @@ int main() {
   cout << "\n[Test D] Testing on the 4-node empty graph..." << endl;
   list<int> cycle_result4 = g_empty.one_cycle();
   print_cycle("Empty Graph Test", cycle_result4);
+
+
+  cout << "\n\n--- Running shortest_paths() Simulations ---" << endl;
+
+  Graph g;
+  g.add_edge(0, 1); g.add_edge(1, 0);
+  g.add_edge(1, 2); g.add_edge(2, 1);
+  g.add_edge(0, 3); g.add_edge(3, 0);
+  g.add_edge(3, 2); g.add_edge(2, 3);
+  g.add_edge(2, 4); g.add_edge(4, 2);
+  g.add_edge(5, 6); g.add_edge(6, 5); // Unreachable component
+
+  cout << "\nTesting shortest paths from source 0:" << endl;
+  g.print_graph();
+  map<int, list<int>> paths = g.shortest_paths(0);
+  print_paths("Shortest Paths from 0", paths);
+
+  /* 预期输出:
+  ## Shortest Paths from 0 ##
+    Path to 0: [ 0 ]
+    Path to 1: [ 1 0 ]
+    Path to 2: [ 2 1 0 ]  (或 [ 2 3 0 ]，取决于遍历顺序, 但路径长度必须是3)
+    Path to 3: [ 3 0 ]
+    Path to 4: [ 4 2 1 0 ] (或 [ 4 2 3 0 ])
+    (不应包含 5 和 6 的路径)
+  */
+
 
   return 0;
 }

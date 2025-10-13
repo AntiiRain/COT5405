@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.27"
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "hw1::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-hw1-Debug-cf1a5d7c512688b9ea12.json",
+					"jsonFile" : "target-hw1-Debug-8447ed4e87e6cd73ddf4.json",
 					"name" : "hw1",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/ruanrong/Documents/GitHub/COT5405/hw1/cmake-build-debug",
-		"source" : "/Users/ruanrong/Documents/GitHub/COT5405/hw1"
+		"build" : "I:/Code/COT5405/hw1/cmake-build-debug",
+		"source" : "I:/Code/COT5405/hw1"
 	},
 	"version" : 
 	{

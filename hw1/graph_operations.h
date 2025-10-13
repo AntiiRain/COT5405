@@ -20,7 +20,7 @@ class Graph {
   vector<int> graph_BFS(int start_vertex);
   vector<list<int>>  connected_components();
   list<int> one_cycle();
-  vector<int> Dijkstra(int start, int end);
+  map<int, list<int>> shortest_paths(int source);
 
  private:
   map<int, vector<int>> adj_list;

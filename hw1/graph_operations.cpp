@@ -10,6 +10,8 @@
 #include <algorithm>
 #include <limits>
 
+//distance vertex
+using Edge = std::pair<int, int>;
 Graph::Graph() {
 
 }
@@ -71,13 +73,84 @@ void Graph::dfs_helper_cc(int u, unordered_set<int>& visited, list<int>& current
 }
 
 
-vector<int> Graph::Dijkstra(int start, int end){
-  unordered_set<int> visited;
-  vector<int> res_path;
 
+map<int, list<int>> Graph::shortest_paths(int source) {
+  map<int, int> distances;         // 存储从 source 到各点的最短距离
+  map<int, int> predecessor;       // 存储各点在最短路径上的前一个节点
+  map<int, list<int>> result_paths; // 最终返回的路径图
 
-  return res_path;
+  // 1. 初始化
+  for (const auto& pair : adj_list) {
+    distances[pair.first] = numeric_limits<int>::max(); // 所有距离设为无穷大
+  }
+  distances[source] = 0; // 源点到自己的距离为 0
+
+  // 优先队列，存储 {距离, 顶点}，并按距离从小到大排序
+  priority_queue<Edge, vector<Edge>, greater<Edge>> pq;
+  pq.push({0, source});
+
+  // 2. Dijkstra 主循环
+  while (!pq.empty()) {
+    int u = pq.top().second;
+    int dist_u = pq.top().first;
+    pq.pop();
+
+    // 如果我们已经找到了到 u 的一条更短路径，就跳过这个旧的条目
+    if (dist_u > distances[u]) {
+      continue;
+    }
+
+    // 遍历 u 的所有邻居
+    if (adj_list.count(u)) {
+      for (int v : adj_list.at(u)) {
+        // 权重为 1
+        if (distances[u] + 1 < distances[v]) {
+          distances[v] = distances[u] + 1;
+          predecessor[v] = u; // 记录 v 的前驱是 u
+          pq.push({distances[v], v});
+        }
+      }
+    }
+  }
+
+  // 3. 重建路径
+  // 遍历所有节点，如果节点可达，则从后往前构建路径
+  for (const auto& pair : distances) {
+    int v = pair.first;
+    int dist = pair.second;
+
+    if (dist != numeric_limits<int>::max()) { // 如果节点 v 是可达的
+      list<int> path;
+      int current = v;
+      while (predecessor.count(current)) {
+        path.push_front(current);
+        current = predecessor[current];
+      }
+      path.push_front(source); // 最后加入源点
+
+      // 作业要求是 v -> source 的路径，我们构建的是 source -> v 的路径
+      // 但作业又说 "sp[v] is the list of vertices on a path from v back to source"
+      // 这意味着从 v 开始，所以我们的构建方式是对的。
+      // 让我们再仔细读一下 "A path in our case consists of a list of vertices and should include both v and the source."
+      // "sp[v] is the list of vertices on a path from v back to source" -> [v, p1, p2, ..., source]
+
+      // 让我们按要求重建路径
+      result_paths[v].clear();
+      current = v;
+      while (predecessor.count(current)) {
+        result_paths[v].push_back(current);
+        current = predecessor[current];
+      }
+      result_paths[v].push_back(source);
+    }
+  }
+  // 特殊处理源点本身
+  result_paths[source] = {source};
+
+  return result_paths;
 }
+
+
 
 
 
@@ -100,33 +173,41 @@ list<int> Graph::one_cycle() {
 
 
 bool Graph::dfs_helper_cycle(int u, int p, unordered_set<int>& visited,
-                             vector<int>& path, list<int>& result_cycle){
+                             vector<int>& path, list<int>& result_cycle) {
   visited.insert(u);
   path.push_back(u);
-  for(int vertex:adj_list[u]){
-    if (vertex == p) {
-      continue;
-    }
 
-    auto it = find(path.begin(), path.end(), vertex);
-    if (it != path.end()) {
-      result_cycle.assign(it, path.end());
-      result_cycle.push_back(vertex); // 闭合环
-      if (result_cycle.size() >= 3) {
-        result_cycle = result_cycle; // It's a valid cycle!
-        return true;
+  if (adj_list.count(u)) {
+    for (int v : adj_list.at(u)) {
+      if (v == p) {
+        continue;
       }
-    }
-    if (visited.find(vertex) == visited.end()) {
-      if (dfs_helper_cycle(vertex, u, visited, path, result_cycle)) {
-        return true; // 如果下层调用找到了环, 立刻向上传递 true
+
+      auto it = find(path.begin(), path.end(), v);
+      if (it != path.end()) {
+        // Found a potential cycle. Reconstruct it first.
+        list<int> potential_cycle;
+        potential_cycle.assign(it, path.end());
+        potential_cycle.push_back(v);
+
+        if (potential_cycle.size() >= 3) {
+          result_cycle = potential_cycle; // It's a valid cycle!
+          return true;
+        }
+        // If not, it's a self-loop or 2-node loop. Ignore it and continue.
+      }
+
+      if (visited.find(v) == visited.end()) {
+        if (dfs_helper_cycle(v, u, visited, path, result_cycle)) {
+          return true;
+        }
       }
     }
   }
+
   path.pop_back();
   return false;
 }
-
 
 
 
