@@ -19,7 +19,7 @@ void print_all_components(const string& title, const vector<list<int>>& componen
   cout << "------------------------------------" << endl;
 }
 
-// ✅ NEW: Helper function to print the result of one_cycle()
+// NEW: Helper function to print the result of one_cycle()
 void print_cycle(const string& title, const list<int>& cycle) {
   cout << "## " << title << " ##" << endl;
   if (cycle.empty()) {

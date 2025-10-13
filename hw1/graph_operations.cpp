@@ -8,6 +8,8 @@
 #include "unordered_set"
 #include "list"
 #include <algorithm>
+#include <limits>
+
 Graph::Graph() {
 
 }
@@ -67,6 +69,16 @@ void Graph::dfs_helper_cc(int u, unordered_set<int>& visited, list<int>& current
 //    cout<< "this connected components end";
   }
 }
+
+
+vector<int> Graph::Dijkstra(int start, int end){
+  unordered_set<int> visited;
+  vector<int> res_path;
+
+
+  return res_path;
+}
+
 
 
 list<int> Graph::one_cycle() {
@@ -142,6 +154,8 @@ vector<int> Graph::graph_BFS(int start_vertex){
   }
   return res;
 }
+
+
 
 //  auto it = adj_list.find(u);
 //

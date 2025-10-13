@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "hw1.exe"
-		},
-		{
-			"path" : "hw1.pdb"
+			"path" : "hw1"
 		}
 	],
 	"backtrace" : 1,
@@ -38,7 +35,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -fdiagnostics-color=always"
+					"fragment" : "-g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -fcolor-diagnostics"
 				}
 			],
 			"language" : "CXX",
@@ -70,16 +67,12 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "hw1",
-	"nameOnDisk" : "hw1.exe",
+	"nameOnDisk" : "hw1",
 	"paths" : 
 	{
 		"build" : ".",
