@@ -1,6 +1,8 @@
 #include <iostream>
 #include "graph_operations.h"
 #include "graph_simulator.h"
+#include <chrono> // 用于精确计时
+
 
 // ----------------- HELPER FUNCTIONS -----------------
 
@@ -47,6 +49,20 @@ void print_cycle(const string& title, const list<int>& cycle) {
   }
   cout << "------------------------------------" << endl;
 }
+
+void print_test_header(const string& title, int n) {
+  cout << "\n--- " << title << " (n = " << n << ") ---" << endl;
+}
+
+/**
+ * @brief 打印算法的运行时间
+ * @param algo_name 算法名称
+ * @param duration 持续时间 (毫秒)
+ */
+void print_timing(const string& algo_name, double duration_ms) {
+  cout << "  - " << algo_name << " took: " << duration_ms << " ms" << endl;
+}
+
 
 
 // ----------------- MAIN FUNCTION -----------------
@@ -138,6 +154,111 @@ int main() {
     Path to 4: [ 4 2 1 0 ] (或 [ 4 2 3 0 ])
     (不应包含 5 和 6 的路径)
   */
+
+  vector<int> sizes = {10, 100, 1000, 5000};
+  // 对于完全图，规模不能太大，否则边数会爆炸，运行时间极长
+  vector<int> complete_graph_sizes = {10, 50, 100, 500, 1000};
+
+  cout << "========================================================" << endl;
+  cout << "       开始进行图算法系统性性能测试" << endl;
+  cout << "========================================================" << endl;
+
+  // -----------------------------------------------------------------
+  // 实验一：n-cycle (n元环图)
+  // -----------------------------------------------------------------
+  cout << "\n\n******************** 实验一: N-Cycle Graph ********************" << endl;
+  for (int n : sizes) {
+    print_test_header("N-Cycle Graph", n);
+    Graph g = create_n_cycle(n);
+
+    // 1. 测试 connected_components
+    auto start = chrono::high_resolution_clock::now();
+    vector<list<int>> components = g.connected_components();
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double, milli> duration_ms = end - start;
+    print_timing("connected_components()", duration_ms.count());
+
+    // 2. 测试 one_cycle
+    start = chrono::high_resolution_clock::now();
+    list<int> cycle = g.one_cycle();
+    end = chrono::high_resolution_clock::now();
+    duration_ms = end - start;
+    print_timing("one_cycle()", duration_ms.count());
+
+    // 3. 测试 shortest_paths (从节点 0 开始)
+    start = chrono::high_resolution_clock::now();
+    map<int, list<int>> paths = g.shortest_paths(0);
+    end = chrono::high_resolution_clock::now();
+    duration_ms = end - start;
+    print_timing("shortest_paths(0)", duration_ms.count());
+  }
+
+  // -----------------------------------------------------------------
+  // 实验二：Complete Graph (完全图)
+  // -----------------------------------------------------------------
+  cout << "\n\n******************** 实验二: Complete Graph ********************" << endl;
+  for (int n : complete_graph_sizes) {
+    print_test_header("Complete Graph", n);
+    Graph g = create_complete_graph(n);
+
+    // 1. 测试 connected_components
+    auto start = chrono::high_resolution_clock::now();
+    g.connected_components();
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double, milli> duration_ms = end - start;
+    print_timing("connected_components()", duration_ms.count());
+
+    // 2. 测试 one_cycle
+    start = chrono::high_resolution_clock::now();
+    g.one_cycle();
+    end = chrono::high_resolution_clock::now();
+    duration_ms = end - start;
+    print_timing("one_cycle()", duration_ms.count());
+
+    // 3. 测试 shortest_paths (从节点 0 开始)
+    start = chrono::high_resolution_clock::now();
+    g.shortest_paths(0);
+    end = chrono::high_resolution_clock::now();
+    duration_ms = end - start;
+    print_timing("shortest_paths(0)", duration_ms.count());
+  }
+
+  // -----------------------------------------------------------------
+  // 实验三：Empty Graph (空图)
+  // -----------------------------------------------------------------
+  cout << "\n\n******************** 实验三: Empty Graph ********************" << endl;
+  for (int n : sizes) {
+    print_test_header("Empty Graph", n);
+    Graph g = create_empty_graph(n);
+
+    // 1. 测试 connected_components
+    auto start = chrono::high_resolution_clock::now();
+    g.connected_components();
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double, milli> duration_ms = end - start;
+    print_timing("connected_components()", duration_ms.count());
+
+    // 2. 测试 one_cycle
+    start = chrono::high_resolution_clock::now();
+    g.one_cycle();
+    end = chrono::high_resolution_clock::now();
+    duration_ms = end - start;
+    print_timing("one_cycle()", duration_ms.count());
+
+    // 3. 测试 shortest_paths (从节点 0 开始)
+    start = chrono::high_resolution_clock::now();
+    g.shortest_paths(0);
+    end = chrono::high_resolution_clock::now();
+    duration_ms = end - start;
+    print_timing("shortest_paths(0)", duration_ms.count());
+  }
+
+  cout << "\n\n========================================================" << endl;
+  cout << "             所有性能测试已完成" << endl;
+  cout << "========================================================" << endl;
+
+
+
 
 
   return 0;
