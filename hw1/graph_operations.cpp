@@ -153,7 +153,6 @@ map<int, list<int>> Graph::shortest_paths(int source) {
 
 
 
-
 list<int> Graph::one_cycle() {
   unordered_set<int> visited;
   list<int> result_cycle;
@@ -208,6 +207,7 @@ bool Graph::dfs_helper_cycle(int u, int p, unordered_set<int>& visited,
   path.pop_back();
   return false;
 }
+
 
 
 
