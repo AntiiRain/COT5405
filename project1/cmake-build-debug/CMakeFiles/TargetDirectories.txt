@@ -1,0 +1,3 @@
+/Users/ruanrong/Documents/GitHub/COT5405/project1/cmake-build-debug/CMakeFiles/project1.dir
+/Users/ruanrong/Documents/GitHub/COT5405/project1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/ruanrong/Documents/GitHub/COT5405/project1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
