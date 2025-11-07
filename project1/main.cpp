@@ -46,13 +46,13 @@ double bruteForce(const std::vector<Point>& points, int left, int right) {
 double closestUtil(const std::vector<Point>& Px_sorted, const std::vector<Point>& Py_sorted) {
   int n = Px_sorted.size();
 
-  // 1. [Base Case] 基准情况
+  // 1. Base Case
   if (n <= 3) {
     // Px_sorted 包含了所有的点，所以我们直接对它使用暴力解法
     return bruteForce(Px_sorted, 0, n - 1);
   }
 
-  // 2. [Divide] 分解
+  // 2 Divide
   int mid = n / 2;
   Point midPoint = Px_sorted[mid - 1]; // 左侧子集的最后一个点
   double midX = midPoint.x;
@@ -108,6 +108,8 @@ double closestUtil(const std::vector<Point>& Px_sorted, const std::vector<Point>
 
   return std::min(delta, minDistStrip);
 }
+
+
 
 /**
  * @brief 算法的主入口 (Wrapper)
@@ -177,11 +179,10 @@ int main() {
               << n_log_n << "\t\t"
               << constant << "\n";
 
-    // (可选) 验证正确性
-    // if (n <= 1000) {
-    //     double bf_dist = bruteForce(points, 0, n - 1);
-    //     std::cout << "  -> D&C: " << min_dist << ", BruteForce: " << bf_dist << std::endl;
-    // }
+     if (n <= 1000) {
+         double bf_dist = bruteForce(points, 0, n - 1);
+         std::cout << "  -> D&C: " << min_dist << ", BruteForce: " << bf_dist << std::endl;
+     }
   }
   return 0;
 }
